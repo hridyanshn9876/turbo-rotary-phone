@@ -1,0 +1,42 @@
+Signature-Version: 1.0
+Created-By: Apktool M
+SHA1-Digest-Manifest: 9iNFH4NWH13RE7ooqBGoEPkhN+c=
+X-Android-APK-Signed: 2
+
+Name: AndroidManifest.xml
+SHA1-Digest: 8Lh4UBFYjGNyLSJCN42pxZRk2Lo=
+
+Name: assets/backup.jpg
+SHA1-Digest: EpsGbPm7013su2Trnp/9WfejzQ4=
+
+Name: assets/unlocked.mp4
+SHA1-Digest: Rc5kExQavGEnZMK4dMrH9jr/11Y=
+
+Name: classes.dex
+SHA1-Digest: WX41lX0bSJtJEJtqvPLOQqLDMUI=
+
+Name: res/drawable-xxhdpi-v4/banner.png
+SHA1-Digest: DP9syvth4sulik/1GAz8CC38DSo=
+
+Name: res/drawable-xxhdpi-v4/icon.png
+SHA1-Digest: 6nWcia1pITp+qXejZnsLMdvTLaA=
+
+Name: res/drawable-xxhdpi-v4/preview.png
+SHA1-Digest: IS3qNIJr+dJX4ZtDuWv9os3M5x8=
+
+Name: res/raw/video_fs.glsl
+SHA1-Digest: Jm0dXMrOdELVygmk4Dx2YqqNKaY=
+
+Name: res/raw/video_vs.glsl
+SHA1-Digest: wNxbcYrAHzNL0e8+582X9YVTeOs=
+
+Name: res/xml/skin_info.xml
+SHA1-Digest: 8o2c1OdznQQ+AMGj0lQzvjpD2xM=
+
+Name: res/xml/wallpaper.xml
+SHA1-Digest: POI5ZuY5gckHmYYWGL4EWt4eurI=
+
+Name: resources.arsc
+SHA1-Digest: eAmW40hsvgeDcpfQA+nFzvAqAT8=
+
+

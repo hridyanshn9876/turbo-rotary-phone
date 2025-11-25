@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    android:compileSdkVersion="36"
+    android:compileSdkVersionCodename="16"
+    package="com.rs83.livewallpapers.oneplusmclarer"
+    platformBuildVersionCode="36"
+    platformBuildVersionName="16"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-feature
+        android:glEsVersion="0x30000"
+        android:required="true" />
+    <application
+        android:label="@string/wallpaper_name"
+        android:icon="@drawable/icon"
+        android:allowBackup="true">
+        <service
+            android:name="com.rs83.livewallpapers.oneplus7gold.LiveWallpaperService"
+            android:permission="android.permission.BIND_WALLPAPER"
+            android:directBootAware="true">
+            <intent-filter>
+                <action
+                    android:name="android.service.wallpaper.WallpaperService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.service.wallpaper"
+                android:resource="@xml/wallpaper" />
+        </service>
+    </application>
+</manifest>

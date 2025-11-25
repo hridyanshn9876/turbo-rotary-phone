@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="wallpaper_name">Oneplus 9RT Live Wallpaper 3</string>
+    <string name="unlock_video">unlocked.mp4</string>
+    <string name="wallpaper_component">com.rs83.livewallpapers.oneplus7gold/com.rs83.livewallpapers.oneplus7gold.LiveWallpaperService</string>
+</resources>

@@ -1,0 +1,38 @@
+Manifest-Version: 1.0
+
+Name: AndroidManifest.xml
+SHA1-Digest: vhTt+kMUtXygCHFitmq0eRaYxiY=
+
+Name: assets/backup.jpg
+SHA1-Digest: ANRxmPQbNPnXzv/+hZteBWPU6Qs=
+
+Name: assets/unlocked.mp4
+SHA1-Digest: QqAUXETDtFp/Xo7bOPbp7Fwx/uc=
+
+Name: classes.dex
+SHA1-Digest: WSgUcNHaiRhNuwSEQSTl5a4bG4c=
+
+Name: res/drawable-xxhdpi-v4/banner.png
+SHA1-Digest: QBe+4R3F8uzFpfXO0WlU/27TlIk=
+
+Name: res/drawable-xxhdpi-v4/icon.png
+SHA1-Digest: EnKRlcXQrmP6WOA0ZdZkBj5sbBg=
+
+Name: res/drawable-xxhdpi-v4/preview.png
+SHA1-Digest: QBe+4R3F8uzFpfXO0WlU/27TlIk=
+
+Name: res/raw/video_fs.glsl
+SHA1-Digest: 51w8jTaZj12RKbsTWdPbImnR78k=
+
+Name: res/raw/video_vs.glsl
+SHA1-Digest: zlEkYHXxrrCBVlgl2wHHIF0KwHk=
+
+Name: res/xml/skin_info.xml
+SHA1-Digest: jEQnvXh31PnsZ767IcPSFs0OMq0=
+
+Name: res/xml/wallpaper.xml
+SHA1-Digest: u/hJdzp/1w1xO3Ir4nP1bbt3ZOY=
+
+Name: resources.arsc
+SHA1-Digest: f2NqYNAZXuJVNzabiXas5jonX5M=
+
