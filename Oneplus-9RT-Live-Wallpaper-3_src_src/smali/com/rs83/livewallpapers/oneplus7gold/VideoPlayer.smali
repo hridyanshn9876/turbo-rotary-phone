@@ -719,7 +719,7 @@
 .end method
 
 .method public declared-synchronized update()V
-    .locals 16
+    .locals 10
 
     .prologue
     .line 233
@@ -744,7 +744,7 @@
     iget-object v2, p0, Lcom/rs83/livewallpapers/oneplus7gold/VideoPlayer;->mUvTransform:[F
     invoke-virtual {v1, v2}, Landroid/graphics/SurfaceTexture;->getTransformMatrix([F)V
 
-    # center-crop calculation
+    # center-crop: get video dimensions
     iget-object v2, p0, Lcom/rs83/livewallpapers/oneplus7gold/VideoPlayer;->mVideoStream:Lcom/rs83/livewallpapers/oneplus7gold/VideoStream
     if-eqz v2, :no_crop
 
@@ -761,26 +761,24 @@
     invoke-virtual {v5}, Landroid/view/View;->getHeight()I
     move-result v7
 
-    int-to-float v8, v6
-    int-to-float v9, v7
-    int-to-float v10, v3
-    int-to-float v11, v4
+    int-to-float v0, v6
+    int-to-float v1, v7
+    int-to-float v2, v3
+    int-to-float v3, v4
 
-    div-float v12, v8, v9    # viewAspect
-    div-float v13, v10, v11  # videoAspect
-
-    cmpg-float v14, v13, v12
-    if-lez v14, :video_narrow
+    div-float v4, v0, v1    # viewAspect
+    div-float v5, v2, v3    # videoAspect
+    cmpg-float v6, v5, v4
+    if-lez v6, :video_narrow
 
     # video wider: scaleX = viewAspect / videoAspect, scaleY = 1
-    div-float v15, v12, v13
-    const/high16 v0, 0x3f800000
-    move v1, v0
+    div-float v8, v4, v5
+    const/high16 v9, 0x3f800000
     goto :build_crop
 
     :video_narrow
-    const/high16 v15, 0x3f800000
-    div-float v1, v13, v12
+    const/high16 v8, 0x3f800000
+    div-float v9, v5, v4
 
     :build_crop
     const/4 v0, 0x10
@@ -789,11 +787,11 @@
     invoke-static {v0, v1}, Landroid/opengl/Matrix;->setIdentityM([FI)V
     const/high16 v1, -0x41000000    # -0.5f
     invoke-static {v0, v1, v1, v1, v1}, Landroid/opengl/Matrix;->translateM([FIFFF)V
-    invoke-static {v0, v1, v15, v1, v1}, Landroid/opengl/Matrix;->scaleM([FIFFF)V
+    invoke-static {v0, v1, v8, v9, v1}, Landroid/opengl/Matrix;->scaleM([FIFFF)V
     const/high16 v1, 0x3f000000    # 0.5f
     invoke-static {v0, v1, v1, v1, v1}, Landroid/opengl/Matrix;->translateM([FIFFF)V
 
-    # multiply crop * currentUv -> temp
+    # multiply: crop * currentUv
     const/4 v1, 0x10
     new-array v1, v1, [F
     iget-object v2, p0, Lcom/rs83/livewallpapers/oneplus7gold/VideoPlayer;->mUvTransform:[F
