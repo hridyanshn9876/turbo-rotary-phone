@@ -719,14 +719,14 @@
 .end method
 
 .method public declared-synchronized update()V
-    .locals 10
+    .locals 2
 
     .prologue
     .line 233
     monitor-enter p0
 
     :try_start_0
-    iget-object v0, p0, Lcom/rs83/livewallpapers/oneplus7gold/VideoPlayer;->mSurfaceTexture:Landroid/graphics/SurfaceTexture
+    iget-object v0, p0, Lcom/rs83/livewallpapers/oneplus7gold/VideoPlayer;->mSurfaceTexture:Landroid/graphics/SurfaceTexture;
 
     if-eqz v0, :cond_0
 
@@ -734,91 +734,58 @@
 
     if-eqz v1, :cond_0
 
+    .line 234
     const/4 v1, 0x0
+
     iput-boolean v1, p0, Lcom/rs83/livewallpapers/oneplus7gold/VideoPlayer;->mNewFrameAvailable:Z
 
-    iget-object v1, p0, Lcom/rs83/livewallpapers/oneplus7gold/VideoPlayer;->mSurfaceTexture:Landroid/graphics/SurfaceTexture
+    .line 235
+    iget-object v1, p0, Lcom/rs83/livewallpapers/oneplus7gold/VideoPlayer;->mSurfaceTexture:Landroid/graphics/SurfaceTexture;
+
     invoke-virtual {v1}, Landroid/graphics/SurfaceTexture;->updateTexImage()V
 
-    iget-object v1, p0, Lcom/rs83/livewallpapers/oneplus7gold/VideoPlayer;->mSurfaceTexture:Landroid/graphics/SurfaceTexture
-    iget-object v2, p0, Lcom/rs83/livewallpapers/oneplus7gold/VideoPlayer;->mUvTransform:[F
-    invoke-virtual {v1, v2}, Landroid/graphics/SurfaceTexture;->getTransformMatrix([F)V
+    .line 236
+    iget-object v1, p0, Lcom/rs83/livewallpapers/oneplus7gold/VideoPlayer;->mSurfaceTexture:Landroid/graphics/SurfaceTexture;
 
-    # center-crop: get video dimensions
-    iget-object v2, p0, Lcom/rs83/livewallpapers/oneplus7gold/VideoPlayer;->mVideoStream:Lcom/rs83/livewallpapers/oneplus7gold/VideoStream
-    if-eqz v2, :no_crop
+    iget-object v0, p0, Lcom/rs83/livewallpapers/oneplus7gold/VideoPlayer;->mUvTransform:[F
 
-    invoke-virtual {v2}, Lcom/rs83/livewallpapers/oneplus7gold/VideoStream;->getWidth()I
-    move-result v3
-    invoke-virtual {v2}, Lcom/rs83/livewallpapers/oneplus7gold/VideoStream;->getHeight()I
-    move-result v4
-    if-lez v3, :no_crop
-    if-lez v4, :no_crop
+    invoke-virtual {v1, v0}, Landroid/graphics/SurfaceTexture;->getTransformMatrix([F)V
 
-    iget-object v5, p0, Lcom/rs83/livewallpapers/oneplus7gold/VideoPlayer;->mView:Landroid/opengl/GLSurfaceView
-    invoke-virtual {v5}, Landroid/view/View;->getWidth()I
-    move-result v6
-    invoke-virtual {v5}, Landroid/view/View;->getHeight()I
-    move-result v7
+    .line 237
+    iget-object v0, p0, Lcom/rs83/livewallpapers/oneplus7gold/VideoPlayer;->mView:Landroid/opengl/GLSurfaceView;
 
-    int-to-float v0, v6
-    int-to-float v1, v7
-    int-to-float v2, v3
-    int-to-float v3, v4
-
-    div-float v4, v0, v1    # viewAspect
-    div-float v5, v2, v3    # videoAspect
-    cmpg-float v6, v5, v4
-    if-lez v6, :video_narrow
-
-    # video wider: scaleX = viewAspect / videoAspect, scaleY = 1
-    div-float v8, v4, v5
-    const/high16 v9, 0x3f800000
-    goto :build_crop
-
-    :video_narrow
-    const/high16 v8, 0x3f800000
-    div-float v9, v5, v4
-
-    :build_crop
-    const/4 v0, 0x10
-    new-array v0, v0, [F
     const/4 v1, 0x0
-    invoke-static {v0, v1}, Landroid/opengl/Matrix;->setIdentityM([FI)V
-    const/high16 v1, -0x41000000    # -0.5f
-    invoke-static {v0, v1, v1, v1, v1}, Landroid/opengl/Matrix;->translateM([FIFFF)V
-    invoke-static {v0, v1, v8, v9, v1}, Landroid/opengl/Matrix;->scaleM([FIFFF)V
-    const/high16 v1, 0x3f000000    # 0.5f
-    invoke-static {v0, v1, v1, v1, v1}, Landroid/opengl/Matrix;->translateM([FIFFF)V
 
-    # multiply: crop * currentUv
-    const/4 v1, 0x10
-    new-array v1, v1, [F
-    iget-object v2, p0, Lcom/rs83/livewallpapers/oneplus7gold/VideoPlayer;->mUvTransform:[F
-    invoke-static {v1, v7, v0, v7, v2, v7}, Landroid/opengl/Matrix;->multiplyMM([FI[FI[FI)V
-    iput-object v1, p0, Lcom/rs83/livewallpapers/oneplus7gold/VideoPlayer;->mUvTransform:[F
-
-    :no_crop
-    iget-object v0, p0, Lcom/rs83/livewallpapers/oneplus7gold/VideoPlayer;->mView:Landroid/opengl/GLSurfaceView
-    const/4 v1, 0x0
     invoke-virtual {v0, v1}, Landroid/opengl/GLSurfaceView;->setRenderMode(I)V
 
+    .line 240
     :cond_0
-    iget-object v0, p0, Lcom/rs83/livewallpapers/oneplus7gold/VideoPlayer;->mStreamCondition:Lcom/rs83/livewallpapers/oneplus7gold/VideoPlayer$StreamCondition
-    sget-object v1, Lcom/rs83/livewallpapers/oneplus7gold/VideoPlayer$StreamCondition;->NEEDS_RESTART:Lcom/rs83/livewallpapers/oneplus7gold/VideoPlayer$StreamCondition
+    iget-object v0, p0, Lcom/rs83/livewallpapers/oneplus7gold/VideoPlayer;->mStreamCondition:Lcom/rs83/livewallpapers/oneplus7gold/VideoPlayer$StreamCondition;
+
+    sget-object v1, Lcom/rs83/livewallpapers/oneplus7gold/VideoPlayer$StreamCondition;->NEEDS_RESTART:Lcom/rs83/livewallpapers/oneplus7gold/VideoPlayer$StreamCondition;
+
     if-ne v0, v1, :cond_1
+
+    .line 245
     invoke-direct {p0}, Lcom/rs83/livewallpapers/oneplus7gold/VideoPlayer;->resetStream()Z
+
     move-result v0
+
     iput-boolean v0, p0, Lcom/rs83/livewallpapers/oneplus7gold/VideoPlayer;->mIsPlaying:Z
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
+    .line 247
     :cond_1
     monitor-exit p0
+
     return-void
 
+    .line 233
     :catchall_0
     move-exception v0
+
     monitor-exit p0
+
     throw v0
 .end method
